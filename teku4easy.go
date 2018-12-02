@@ -50,8 +50,8 @@ func main() {
 func findMostCongested(oazas *[]oaza, width, height float64, minPos, maxPos position) (position, []oaza) {
 	var bestPos position
 	var bestResult []oaza = make([]oaza, 0, 0)
-	for lat := minPos.latitude; lat < maxPos.latitude; lat += width {
-		for long := minPos.longitude; long < maxPos.longitude; long += height {
+	for lat := minPos.latitude; lat < maxPos.latitude; lat += width/10 {
+		for long := minPos.longitude; long < maxPos.longitude; long += height/10 {
 			result := make([]oaza, 0)
 			for _, oaza := range *oazas {
 				if lat - width <= oaza.pos.latitude && oaza.pos.latitude <= lat + width && long - height <= oaza.pos.longitude && oaza.pos.longitude <= long + height {
